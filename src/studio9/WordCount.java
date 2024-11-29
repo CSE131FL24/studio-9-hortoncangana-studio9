@@ -3,9 +3,7 @@ package studio9;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-
-import support.cse131.NotYetImplementedException;
+import java.util.Map; 
 
 public class WordCount {
 	/**
@@ -29,14 +27,16 @@ public class WordCount {
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
+		Map<String, Integer> wordCounts = new HashMap<>(); // Create a HashMap to store word counts
+		for (String word : words) { // Iterate through the list of words
+			wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1); // Increment the word count
+		}
 
-		// FIXME
-		throw new NotYetImplementedException();
-
+		return wordCounts; // Return the map
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		List<String> wordList = new LinkedList<>();
 		wordList.add("to");
 		wordList.add("be");
@@ -45,8 +45,11 @@ public class WordCount {
 		wordList.add("to");
 		wordList.add("be");
 		Map<String, Integer> words = countWords(wordList);
-		
+
 		//TODO: Write code that will iterate over the words map
 		//to verify its contents
-	}
-}
+		for(Map.Entry<String, Integer> entry:words.entrySet()) { 
+			System.out.println("Word: "+entry.getKey() + ", Count: "+ entry.getValue()); 
+		}
+	} 
+} 
